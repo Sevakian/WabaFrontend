@@ -46,6 +46,8 @@
       <h4> {{ date }} </h4>
       <h3 v-if="invalidDate" style="color:red;"> Bitte geben sie das richtige Format ein (YYYY-MM-DD HH:mm:ss)</h3>
       <button v-on:click="save()"> Speichern </button> 
+
+      <button v-on:click="update()"> Aktualisieren </button>
     </div>
     
   
@@ -66,12 +68,12 @@ export default {
       recentlyAdded: false,
 
       dateItem: {
-        year: "YYYY",
-        month: "MM",
-        day: "DD",
-        hour:"HH",
-        minutes:"mm",
-        seconds: "ss"
+        year: moment().format("YYYY"),
+        month: moment().format("MM"),
+        day: moment().format("DD"),
+        hour: moment().format("HH"),
+        minutes: moment().format("mm"),
+        seconds: "00"
       }
     }
   },
@@ -93,7 +95,7 @@ export default {
     ...mapActions('date', ['saveDate']),
 
     save(){
-      // event.preventDefault();
+      event.preventDefault();
       var formatDate = moment(this.date).format('YYYY-MM-DD HH:mm:ss')
       var valid = moment(formatDate, 'YYYY-MM-DD HH:mm:ss', true).isValid();
       if(!valid){
@@ -105,8 +107,18 @@ export default {
         this.saveDate(formatDate);
       }
     },
+    update(){
+      event.preventDefault();
+      this.dateItem.year = moment().format("YYYY"),
+      this.dateItem.month = moment().format("MM"),
+      this.dateItem.day = moment().format("DD"),
+      this.dateItem.hour = moment().format("HH"),
+      this.dateItem.minutes = moment().format("mm"),
+      this.dateItem.seconds = "00"
+      }
+    }
   }
-}
+
 </script>
 
 <style scoped lang="less">

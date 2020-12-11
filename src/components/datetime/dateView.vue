@@ -1,17 +1,17 @@
 <template>
     <div>
         <div class="item"> 
-            <h4> AllTimeline </h4>
+            <h4> Timeline </h4>
             <div v-for="u in timeline" :key="u.id">
                 <span v-if="u.inDate" class="active"><b> {{ u.date }} </b> </span>
                 <span v-else-if="!u.inDate"> {{ u.date }}</span>
             </div>
         </div>
         <div class="item"> 
-            <h4> Timeline </h4>
+            <h4> Sum Dates </h4>
             <div v-for="m in timeline" :key="m.id">
-                <span v-if="m.inDate && !m.duplicate"> {{ m.date }} </span>
-                <span v-else-if="m.inDate && m.duplicate" class="duplicated"> <b> {{ m.date }} </b></span>
+                <span v-if="m.inDate && m.val <= 1"> {{ m.date }} </span>
+                <span v-else-if="m.inDate && m.val > 1" class="duplicated"> <b> {{ m.date }} - {{ m.val }}x</b></span>
             </div>
         </div>
         <div class="item">
@@ -25,7 +25,7 @@
 
 <script>
 // import moment from 'moment';
-import { mapActions, mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
     name: "dateDisplay",
@@ -34,9 +34,7 @@ export default {
             
         }
     },
-    created(){
-        this.getAllDates();
-    },
+
     
     computed: {
         ...mapGetters("date", ['_getAllDates', '_getTimeline']),
@@ -52,7 +50,6 @@ export default {
 
         
     methods: {
-        ...mapActions('date', ['getAllDates']),
 
         logData(){
             event.preventDefault();

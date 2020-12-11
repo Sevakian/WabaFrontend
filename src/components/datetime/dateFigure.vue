@@ -6,11 +6,13 @@
         <div v-if="this.inDate"> 
             <h3 class="active"> Verzeichnet: {{ inDate }}</h3>
         </div>
-        <div v-if="this.duplicated"> 
-            <h3> Doppelt: {{ duplicated }}</h3>
+        <div v-if="this.val"> 
+            <h3> Value: {{ val }}</h3>
         </div>
     </div>
-
+    <svg height:600px width:1400px> 
+       
+    </svg>
     <div class="output"> 
         <div v-for="m in timeline" :key="m.id">
             <div @mouseover="log(m)" v-if="m.inDate && !m.duplicate" class="output true"/> 
@@ -32,7 +34,7 @@ export default {
         return {
            currentDate: "-", 
            inDate: "-",
-           duplicated: "-",
+           val: "-",
         }
     },
     // created(){
@@ -53,13 +55,15 @@ export default {
 
         
     methods: {
+
         ...mapActions('date', ['getAllDates']),
 
     log(date){
-        console.log(date);
+        // console.log("UgaBuga")
+        // console.log(date);
         this.currentDate = date.date;
         this.inDate = date.inDate;
-        this.duplicated = date.duplicate;
+        this.val = date.val;
     }
     }
 }

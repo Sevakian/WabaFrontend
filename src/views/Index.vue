@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Hallo</h3>
+        <h3>Hallo das ist die Startseite</h3>
     </div>
 </template>
 

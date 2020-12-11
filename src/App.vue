@@ -2,8 +2,10 @@
   <div id="app">
     <div id="nav">
       <router-link to="/"> Start </router-link> |
-      <router-link to="/DateTime">DateTime</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/dateTime">DateTime</router-link> |
+      <router-link to="/track">About</router-link> | 
+      <router-link to="/svg">Svg</router-link> | 
+      <router-link to="/gameTable">Tabelle</router-link>
     </div>
     <router-view/>
   </div>

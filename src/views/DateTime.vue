@@ -1,10 +1,18 @@
 <template>
   <div class="container">
 
+
     <div class="container-left"> 
-      <addDate class="containerItem-left"/><br>
+    
+      <dateSelector class="containerItem-left"/>
+      <br>
+
+      <addDate class="containerItem-left"/>
+      <br>
 
       <dateView class="containerItem-left"/>
+      <br>
+      
     </div>
 
     <div class="container-mid">
@@ -17,16 +25,30 @@
 import addDate from '@/components/datetime/addDate.vue'
 import dateView from '@/components/datetime/dateView.vue'
 import dateFigure from '@/components/datetime/dateFigure.vue'
+import dateSelector from '@/components/datetime/dateSelector.vue'
 
-// import {mapState, mapActions, mapGetters } from "vuex";
+import {mapActions  } from "vuex";
 
 export default {
+  
   name: 'DateTime',
   components: {
     addDate,
     dateView,
     dateFigure,
+    dateSelector
   },
+  
+    methods: {
+        ...mapActions('date', ['getAllDates', 'setTable', 'getTables']),
+    },
+
+    created(){
+        var table = localStorage.getItem('selectedTable')
+        this.setTable(table);
+        this.getAllDates(table);
+        this.getTables();
+    },
 }
 
 </script>

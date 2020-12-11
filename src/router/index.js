@@ -10,14 +10,24 @@ const routes = [
     component: () => import('../views/Index.vue') 
   },
   {
-    path: '/DateTime',
-    name: 'DateTime',
+    path: '/dateTime',
+    name: 'dateTime',
     component: () => import('../views/DateTime.vue')
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () => import( '../views/About.vue')
+    path: '/track',
+    name: 'track',
+    component: () => import( '../views/Track.vue')
+  },
+  {
+    path: '/svg',
+    name: 'svg',
+    component: () => import( '../views/svgTest.vue')
+  },
+  {
+    path: '/gameTable',
+    name: 'gameTable',
+    component: () => import( '../views/gameTable.vue')
   }
 ]
 
