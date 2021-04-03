@@ -3,7 +3,7 @@
         <div class="item"> 
             <h4> Timeline </h4>
             <div v-for="u in timeline" :key="u.id">
-                <span v-if="u.inDate" class="active"><b> {{ u.date }} </b> </span>
+                <span v-if="u.inDate" class="active"><b> {{ u.date }} </b> <span v-if="u.val>1"> {{ u.val }}x </span> </span>
                 <span v-else-if="!u.inDate"> {{ u.date }}</span>
             </div>
         </div>
@@ -11,7 +11,7 @@
             <h4> Sum Dates </h4>
             <div v-for="m in timeline" :key="m.id">
                 <span v-if="m.inDate && m.val <= 1"> {{ m.date }} </span>
-                <span v-else-if="m.inDate && m.val > 1" class="duplicated"> <b> {{ m.date }} - {{ m.val }}x</b></span>
+                <span v-else-if="m.inDate && m.val > 1">{{ m.date }} - <span class="active"> {{ m.val }}x</span></span>
             </div>
         </div>
         <div class="item">
@@ -28,7 +28,7 @@
 import { mapGetters } from "vuex";
 
 export default {
-    name: "dateDisplay",
+    name: "dateView",
     data(){
         return {
             
@@ -65,9 +65,7 @@ export default {
     width:133px;
 }
 .active {
-    color:#8A2BE2;
+    color:#009900;
 }
-.duplicated {
-    color: #E22BDE;
-}
+
 </style>

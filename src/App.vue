@@ -3,9 +3,11 @@
     <div id="nav">
       <router-link to="/"> Start </router-link> |
       <router-link to="/dateTime">DateTime</router-link> |
-      <router-link to="/track">About</router-link> | 
-      <router-link to="/svg">Svg</router-link> | 
-      <router-link to="/gameTable">Tabelle</router-link>
+      <router-link to="/Calendar">Calendar</router-link> |
+      <router-link to="/Gaming">Gaming</router-link> |
+      <router-link to="/Todo">Todo </router-link> |  
+      <router-link to="/track">Track</router-link> | 
+      <router-link to="/svg">Svg</router-link> |     
     </div>
     <router-view/>
   </div>

@@ -1,6 +1,9 @@
 <template>
     <div>
-        <h3>Hallo das ist die Startseite</h3>
+        <h1>Hallo das ist die Startseite</h1>
+        <div> 
+            <img height="auto" width="auto" src="./../assets/main/pyra.jpg" alt="" />
+        </div>
     </div>
 </template>
 

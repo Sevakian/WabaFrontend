@@ -15,6 +15,11 @@ const routes = [
     component: () => import('../views/DateTime.vue')
   },
   {
+    path: '/Calendar',
+    name: 'Calendar',
+    component: () => import('../views/Calendar.vue')
+  },
+  {
     path: '/track',
     name: 'track',
     component: () => import( '../views/Track.vue')
@@ -25,9 +30,14 @@ const routes = [
     component: () => import( '../views/svgTest.vue')
   },
   {
-    path: '/gameTable',
-    name: 'gameTable',
-    component: () => import( '../views/gameTable.vue')
+    path: '/Gaming',
+    name: 'Gaming',
+    component: () => import( '../views/Gaming.vue')
+  },
+  {
+    path: '/Todo',
+    name: 'Todo',
+    component: () => import('../views/Todo.vue')
   }
 ]
 

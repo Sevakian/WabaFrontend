@@ -60,6 +60,7 @@ export default {
 
         setTimeline(state, inResult){
             var allDates = inResult;
+            var today = moment().format('YYYY-MM-DD');
 
             for(var i = 0; i < allDates.length; i++){
                 allDates[i] = moment(allDates[i].datum).format('YYYY-MM-DD');
@@ -75,10 +76,20 @@ export default {
                 }
             });
             duplo = Object.entries(duplo)
-            let endindex = duplo.length-1;
+            
 
+            // let endindex = duplo.length-1;
             let index = 0;
-            while(moment(newDate) <= moment(duplo[endindex][0])){
+
+
+            if(today > duplo[duplo.length-1][0]){
+                duplo.push([today, 0])
+                // console.log(duplo)
+                // console.log(today);
+            }
+            // console.log(moment(duplo[duplo.length-1][0]))
+
+            while(moment(newDate) <= moment(duplo[duplo.length-1][0])){
                 
                 if(newDate == duplo[index][0]){
                     timeline.push({date: newDate, inDate: true, val: duplo[index][1]})
