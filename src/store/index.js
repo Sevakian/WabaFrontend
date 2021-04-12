@@ -5,6 +5,7 @@ import date from './modules/date'
 import track from './modules/track'
 import calendar from './modules/calendar'
 import game from './modules/game'
+import todo from './modules/todo'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ export default new Vuex.Store({
     date,
     track,
     calendar,
-    game
+    game,
+    todo
   },
   mutations: {},
   actions: {},

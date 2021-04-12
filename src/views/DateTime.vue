@@ -31,7 +31,7 @@ import {mapActions  } from "vuex";
 
 export default {
   
-  name: 'DateTime',
+  name: 'Datetime',
   components: {
     addDate,
     dateView,

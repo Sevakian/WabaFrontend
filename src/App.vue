@@ -2,14 +2,16 @@
   <div id="app">
     <div id="nav">
       <router-link to="/"> Start </router-link> |
-      <router-link to="/dateTime">DateTime</router-link> |
+      <router-link to="/Datetime">Datetime</router-link> |
       <router-link to="/Calendar">Calendar</router-link> |
       <router-link to="/Gaming">Gaming</router-link> |
       <router-link to="/Todo">Todo </router-link> |  
-      <router-link to="/track">Track</router-link> | 
-      <router-link to="/svg">Svg</router-link> |     
+      <!-- <router-link to="/track">Track</router-link> |  -->
+      <!-- <router-link to="/svg">Svg Testgelände</router-link> |      -->
+      <span style="color:#ff9900;font-size:50px;"> 𓂀 </span>
     </div>
     <router-view/>
+    
   </div>
 </template>
 
@@ -36,6 +38,7 @@ export default {
 #nav {
   background-color:#004d80;
   padding: 30px;
+  padding-top:3px;
   border: 1px solid black;
 
   a {

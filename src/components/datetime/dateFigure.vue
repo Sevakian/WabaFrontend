@@ -5,7 +5,7 @@
         <!-- <button @click="logi">Klick</button> -->
         <h3> Date: {{ currentDate }} </h3>
         <h3> Verzeichnet: {{ inDate }}</h3>
-        <h3> Value: {{ val }}</h3>
+        <h3> Wert: {{ val }}</h3>
 
     </div>
     <div class="headline">
@@ -26,37 +26,37 @@
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve0"> 
        </path>
     </svg> -->
-    <span> 1 </span>
+    <!-- <h3> 1 Tag </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve1"> 
        </path>
-    </svg>
-    <span> 2 </span>
+    </svg> -->
+    <h3> 2 Tage zusammengefasst </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve2"> 
        </path>
     </svg>
-    <span> 3 </span>
+    <h3> 3 Tage zusammengefasst </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve3"> 
        </path>
     </svg>
-    <span> 5 </span>
+    <h3> 5 Tage zusammengefasst </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve4"> 
        </path>
     </svg>
-    <span> 7 </span>
+    <h3> 7 Tage / 1 Woche zusammengefasst</h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve5"> 
        </path>
     </svg>
-    <span> 15 </span>
+    <h3> 15 Tage / Halber Monat zusammengefasst </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve6"> 
        </path>
     </svg>
-    <span> 30 </span>
+    <h3> 30 Tage / 1 Monat zusammengefasst </h3>
     <svg viewBox="0 0 1400 220" style="background:black"> 
        <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve7"> 
        </path>
@@ -136,6 +136,7 @@ export default {
                 sum = sum + line[i].val;
             }
             sum = sum / line.length
+            sum = sum.toFixed(4)
             return sum;
         },
 
@@ -238,10 +239,6 @@ export default {
             console.log(limitVal)
             console.log(newLine)
             return code;
-
-
-
-
         },
 
         getColor(val){
@@ -269,10 +266,10 @@ export default {
     }
 }
 </script>
-<style> 
+<style scoped> 
 .output {
     width:2px;
-    height:600px;
+    height:400px;
     display:flex;
     flex-direction:row;
 }
