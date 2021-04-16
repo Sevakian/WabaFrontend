@@ -7,6 +7,7 @@ export default {
         //Table
         selectedTable: "",
         dateTables: [],
+        maxLength: "",
 
         //
         addedDate: "-",
@@ -33,10 +34,16 @@ export default {
         _getTimeline: state => {
             return state.timeline;
         },
+        _getMaxLength: state => {
+            return state.maxLength
+        }
     },
 
     mutations: {  
         //Table  
+        setLength(state, inLength){
+            state.maxLength = inLength
+        },
         setAllTables(state, inResult){
             let dateTables = [];
             for(var i = 0; i < inResult.length;i++){
@@ -116,6 +123,9 @@ export default {
     },
 
     actions: {
+        async setMaxLength({commit}, inLength){
+            commit("setLength", inLength)
+        },
         //Tabelle
         async setTable({commit}, inTable){
             commit("setTable", inTable);

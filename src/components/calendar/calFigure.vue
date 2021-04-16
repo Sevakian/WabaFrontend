@@ -3,7 +3,7 @@
 
 
         <div class="container"> 
-            <button @click="log()"> log</button>
+            <!-- <button @click="log()"> log</button> -->
             <h1> Heute: {{ today }}</h1>
             <h1> Ausgewählt: {{ selectedDay }} </h1>
             <h3> {{ day }} {{ month }} {{ year }}</h3>
@@ -191,7 +191,6 @@ export default {
             this.isActiveDay = y.year + m.month + d.day;
             this.isActiveMonth = y.year + m.month;
             this.isActiveYear = y.year
-
         },
         setDayClass(d){
             if(moment(d).isoWeekday() == 6|| moment(d).isoWeekday() == 7){
@@ -260,7 +259,7 @@ export default {
     padding:20px;
     display:flex;
     flex-wrap: wrap;
-    width: 1200px;
+    width: 900px;
     background-color:#004d80;
     
 }

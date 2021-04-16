@@ -17,6 +17,10 @@
     <div class="container-mid">
       <calFigure class="containerItem-mid"/>  
     </div>
+    <div> 
+      <calList class="containerItem-right"/>
+    </div>
+          
   </div>
 </template>
 
@@ -25,6 +29,7 @@ import addDate from '@/components/calendar/addDate.vue'
 import calView from '@/components/calendar/calView.vue'
 import calFigure from '@/components/calendar/calFigure.vue'
 import calSelector from '@/components/calendar/calSelector.vue'
+import calList from '@/components/calendar/calList.vue'
 
 import {mapActions  } from "vuex";
 
@@ -35,7 +40,8 @@ export default {
     addDate,
     calView,
     calFigure,
-    calSelector
+    calSelector,
+    calList
   },
   
     methods: {
@@ -74,11 +80,18 @@ export default {
 .containerItem-mid {
   display:flex;
   flex-direction:column;
-  width:1400px;
+  width:950px;
   border:1px solid black;
   padding: 15px;
   margin-left: 15px;
-
+}
+.containerItem-right {
+  /* display:flex; */
+  /* width:500px; */
+  /* overflow:scroll; */
+  padding-left: 10px;
+  height:1000px;
+  position:sticky;
 
 }
 

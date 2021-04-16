@@ -6,11 +6,11 @@
       <router-link to="/Calendar">Calendar</router-link> |
       <router-link to="/Gaming">Gaming</router-link> |
       <router-link to="/Todo">Todo </router-link> |  
-      <!-- <router-link to="/track">Track</router-link> |  -->
-      <!-- <router-link to="/svg">Svg Testgelände</router-link> |      -->
+      <!-- <router-link to="/track">Track</router-link> | 
+      <router-link to="/svg">Svg</router-link> |      -->
       <span style="color:#ff9900;font-size:50px;"> 𓂀 </span>
     </div>
-    <router-view/>
+    <router-view style="overflow-x:scroll"/>
     
   </div>
 </template>
@@ -24,8 +24,13 @@ export default {
   data: () => ({
     
   }),
+
+  // created: function(){
+  //   this.$router.push('/')
+  // }
 };
 </script>
+
 <style lang="less">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

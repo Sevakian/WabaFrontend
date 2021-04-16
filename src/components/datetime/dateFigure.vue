@@ -1,17 +1,20 @@
 <template>
     <div>
     <div class="container"> 
+
+    <div class="headline">
+        <h3> Anzahl Insgesamt: {{ anzahl }}</h3>
+        <h3> Summe Werte: {{ summe }} </h3>
+        <h3> Quersumme: {{ quer }} </h3>
+    </div>
     <div class="headline"> 
         <!-- <button @click="logi">Klick</button> -->
         <h3> Date: {{ currentDate }} </h3>
         <h3> Verzeichnet: {{ inDate }}</h3>
         <h3> Wert: {{ val }}</h3>
-
     </div>
     <div class="headline">
-        <h3> Anzahl Insgesamt: {{ anzahl }}</h3>
-        <h3> Summe Werte: {{ summe }} </h3>
-        <h3> Quersumme: {{ quer }} </h3>
+        <h3> Letzer Eintrag: {{ eintrag }}</h3>
     </div>
     </div>
     <div> 
@@ -22,43 +25,40 @@
     </div>
     </div>
     <div> 
-    <!-- <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve0"> 
-       </path>
-    </svg> -->
-    <!-- <h3> 1 Tag </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve1"> 
-       </path>
-    </svg> -->
     <h3> 2 Tage zusammengefasst </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve2"> 
+    <svg :viewBox="box" style="background:black;"> 
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid2"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve2"> 
        </path>
     </svg>
     <h3> 3 Tage zusammengefasst </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve3"> 
+    <svg :viewBox="box" style="background:black"> 
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid3"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve3"> 
        </path>
     </svg>
     <h3> 5 Tage zusammengefasst </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve4"> 
+    <svg :viewBox="box" style="background:black">
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid4"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve4"> 
        </path>
     </svg>
     <h3> 7 Tage / 1 Woche zusammengefasst</h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve5"> 
+    <svg :viewBox="box" style="background:black"> 
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid5"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve5"> 
        </path>
     </svg>
     <h3> 15 Tage / Halber Monat zusammengefasst </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve6"> 
+    <svg :viewBox="box" style="background:black"> 
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid6"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve6"> 
        </path>
     </svg>
     <h3> 30 Tage / 1 Monat zusammengefasst </h3>
-    <svg viewBox="0 0 1400 220" style="background:black"> 
-       <path stroke="#00ff00" stroke-width="1.5" fill="none" :d="curve7"> 
+    <svg :viewBox="box" style="background:black"> 
+        <path stroke="#00ff00" stroke-width="0.5" fill="none" :d="grid7"></path>
+       <path stroke="#00ff00" stroke-width="2.5" fill="none" :d="curve7"> 
        </path>
     </svg>
     </div>
@@ -67,8 +67,8 @@
 </template>
 
 <script>
-// import moment from 'moment';
-import { mapGetters } from "vuex";
+import moment from 'moment';
+import { mapGetters, mapActions } from "vuex";
 
 
 export default {
@@ -79,8 +79,6 @@ export default {
            inDate: "-",
            val: "-",
 
-        //    curve0: "",
-           curve1: "",
            curve2: "",
            curve3: "",
            curve4: "",
@@ -88,41 +86,78 @@ export default {
            curve6: "",
            curve7: "",
 
+           grid1: "",
+           grid2: "",
+           grid3: "",
+           grid4: "",
+           grid5: "",
+           grid6: "",
+           grid7: "",
+
+           box: "",
+           maxLength: "",
+
            quer: "",
            anzahl: "",
            summe: "",
+           eintrag: "",
 
         }
     },
-    
+
     computed: {
-        ...mapGetters("date", ['_getTimeline']),
+        ...mapGetters("date", ['_getTimeline', '_getAllDates']),
 
         timeline: function(){
             return this._getTimeline;
         },
+
+        allDates: function(){
+            return this._getAllDates;
+        }, 
     },
 
     watch: {
         timeline: function(){
-            // console.log(this.timeline);
-            // this.curve0 = this.calculateCurve0(this.timeline);
-            this.curve1 = this.calculateCurve1(this.timeline);
-            this.curve2 = this.calculateCurve2(this.timeline, 2, 6)
-            this.curve3 = this.calculateCurve2(this.timeline, 3, 8);  
-            this.curve4 = this.calculateCurve2(this.timeline, 5, 12); 
-            this.curve5 = this.calculateCurve2(this.timeline, 7, 16);
-            this.curve6 = this.calculateCurve2(this.timeline, 15, 33);   
-            this.curve7 = this.calculateCurve2(this.timeline, 30, 66);   
+            this.box = this.getBox(this.timeline, 30, 66);
 
+            this.curve2 = this.calculateCurve(this.timeline, 2, 6);
+
+            // this.curve2 = this.curve2 + this.calculateCurve(this.timeline, 3, 8)
+            // this.curve2 = this.curve2 + this.calculateCurve(this.timeline, 5, 12);
+            // this.curve2 = this.curve2 + this.calculateCurve(this.timeline, 7, 16);
+            // this.curve2 = this.curve2 + this.calculateCurve(this.timeline, 15, 33); 
+            // this.curve2 = this.curve2 + this.calculateCurve(this.timeline, 30, 66);  
+
+            this.grid2 = this.getGrid(this.maxLength, 6);
+
+            this.curve3 = this.calculateCurve(this.timeline, 3, 8);
+            this.grid3 = this.getGrid(this.maxLength, 8);
+
+            this.curve4 = this.calculateCurve(this.timeline, 5, 12); 
+            this.grid4 = this.getGrid(this.maxLength, 12);
+
+            this.curve5 = this.calculateCurve(this.timeline, 7, 16);
+            this.grid5 = this.getGrid(this.maxLength, 16);
+
+            this.curve6 = this.calculateCurve(this.timeline, 15, 33); 
+            this.grid6 = this.getGrid(this.maxLength, 33);
+
+            this.curve7 = this.calculateCurve(this.timeline, 30, 66);   
+            this.grid7 = this.getGrid(this.maxLength, 66);
 
             this.quer = this.querSumme(this.timeline);
             this.anzahl = this.anzahlWerte(this.timeline);
-            this.summe = this.summWerte(this.timeline)
+            this.summe = this.summWerte(this.timeline);
+            this.eintrag = this.letzerEintrag(this.allDates)
+        },
+        maxLength: function(){
+            this.setMaxLength(this.maxLength);
         }
     },
         
     methods: {
+        ...mapActions('date', ['setMaxLength']),
 
         anzahlWerte(param){
             let line = param;
@@ -148,53 +183,60 @@ export default {
             }
             return sum;
         },
-        
-        // calculateCurve0(param){
-        //     let line = param;
-        //     let i = 0; 
 
-        //     let steps = 0;
-        //     var code = "";
-        //     let num = 200;
-            
-        //     code = code + `M -1 ${num} `
+        letzerEintrag(param){
+            let letzerEintrag = param[param.length-1]
 
-        //     while(i < line.length){
-        //         code = code + `L${steps} `
-        //         num = 200 - parseInt(line[i].val.toString() + "0") * 3;
-        //         code = code + `${num} `
-        //         i++; 
-        //         steps = steps + 2;
-        //     }
-
-        //     return code;
-        // },
-
-        calculateCurve1(param){
-            // console.log(param)
-            let line = param; 
-            let i = 0;  
-
-            let steps = 0; steps = parseFloat(steps.toFixed(3))
-            var code = "";  
-            let num = 200; 
-
-            code = code +   `M -1 ${num} `  
-
-            while(i < line.length){     
-              let nowVal = line[i].val;
-              code = code +  `S ${steps - 0.8333} `
-              nowVal = parseInt(nowVal.toString() + "0")
-              nowVal = num - nowVal
-              
-              code = code + ` ${nowVal} `
-              code = code + `${steps} ${num - parseInt(line[i].val.toString() + "0")}`
-              steps = steps + 2;         
-              i++;
+            let toda = moment(letzerEintrag).format("YYYY-MM-DD");
+            let day = moment(toda).format('DD');
+            let month = moment(toda).format('MM');
+            switch(month){
+                case "01": month = "Januar"; break;
+                case "02": month = "Februar"; break;
+                case "03": month = "März"; break;
+                case "04": month = "April"; break;
+                case "05": month = "Mai"; break;
+                case "06": month = "Juni"; break;
+                case "07": month = "Juli"; break;
+                case "08": month = "August"; break;
+                case "09": month = "September"; break;
+                case "10": month = "Oktober"; break;
+                case "11": month = "November"; break;
+                case "12": month = "Dezember"; break;  
             }
-            return code;
+            let year = moment(toda).format('YYYY')
+            return day + " " + month + " " + year;
+
         },
-        calculateCurve2(param, limitVal, addVal){
+
+        getBox(timeline, limitVal, addVal){
+            let line = timeline;
+            let i = 0;
+            let steps = 0;
+            let limit = limitVal;
+            let newLine = [];
+            let result = 0;
+
+
+            while(i < line.length){
+                if(steps != limit){
+                    result = result + line[i].val;
+                    steps++;
+                }   
+                else if(steps == limit){
+                    newLine.push(result)
+                    result = 0;
+                    steps = 0;
+                }
+                i++
+            }
+            let length = newLine.length * addVal
+            this.maxLength = length;
+
+            return `0 0 ${length} 220`;
+        },
+
+        calculateCurve(param, limitVal, addVal){
             let line = param;
             let i = 0;
             let steps = 0;
@@ -215,11 +257,9 @@ export default {
                 }
                 i++
             }
-
             //////////////////////////////////////////////////////
 
             steps = 0; steps = parseFloat(steps.toFixed(3))
-            // console.log(steps);
             var code = "";  
             let num = 200; 
             i = 0;
@@ -236,8 +276,25 @@ export default {
               steps = steps + additor;         
               i++;
             }
-            console.log(limitVal)
-            console.log(newLine)
+            return code;
+        },
+
+        getGrid(maxLength, addVal){
+            var code = "";  
+            let num = 200; 
+
+            //rechts nach links
+            while(num != 0){
+                code = code + `M 0 ${num} L ${maxLength} ${num}`
+                num = num - 10;
+            }
+
+            // oben nach unten
+            let counter = 0;
+            while (counter <= maxLength){
+                code = code + `M ${counter} 0 L ${counter} 200`
+                counter = counter + addVal;
+            }
             return code;
         },
 
