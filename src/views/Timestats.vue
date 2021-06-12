@@ -22,16 +22,16 @@
 </template>
 
 <script>
-import addDate from '@/components/datetime/addDate.vue'
-import dateView from '@/components/datetime/dateView.vue'
-import dateFigure from '@/components/datetime/dateFigure.vue'
-import dateSelector from '@/components/datetime/dateSelector.vue'
+import addDate from '@/components/timestats/addDate.vue'
+import dateView from '@/components/timestats/dateView.vue'
+import dateFigure from '@/components/timestats/dateFigure.vue'
+import dateSelector from '@/components/timestats/dateSelector.vue'
 
 import {mapActions, mapGetters  } from "vuex";
 
 export default {
   
-  name: 'Datetime',
+  name: 'Timestats',
   components: {
     addDate,
     dateView,
@@ -40,7 +40,7 @@ export default {
   },
   
     methods: {
-        ...mapActions('date', ['getAllDates', 'setTable', 'getTables']),
+        ...mapActions('timestats', ['getAllDates', 'setTable', 'getTables']),
 
         getLength(){
           // console.log(this.maxLength);
@@ -49,7 +49,7 @@ export default {
     },
 
     computed: {
-      ...mapGetters('date', ['_getMaxLength']),
+      ...mapGetters('timestats', ['_getMaxLength']),
     
       maxLength: function(){
         return this._getMaxLength

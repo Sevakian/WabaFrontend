@@ -10,9 +10,9 @@ const routes = [
     component: () => import('../views/Index.vue') 
   },
   {
-    path: '/Datetime',
-    name: 'Datetime',
-    component: () => import('../views/Datetime.vue')
+    path: '/Timestats',
+    name: 'Timestats',
+    component: () => import('../views/Timestats.vue')
   },
   {
     path: '/Calendar',

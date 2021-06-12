@@ -106,7 +106,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters("date", ['_getTimeline', '_getAllDates']),
+        ...mapGetters("timestats", ['_getTimeline', '_getAllDates']),
 
         timeline: function(){
             return this._getTimeline;
@@ -157,7 +157,7 @@ export default {
     },
         
     methods: {
-        ...mapActions('date', ['setMaxLength']),
+        ...mapActions('timestats', ['setMaxLength']),
 
         anzahlWerte(param){
             let line = param;

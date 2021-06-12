@@ -37,7 +37,7 @@ export default {
 
     
     computed: {
-        ...mapGetters("date", ['_getAllDates', '_getTimeline']),
+        ...mapGetters("timestats", ['_getAllDates', '_getTimeline']),
 
         allDates: function(){
             return this._getAllDates;

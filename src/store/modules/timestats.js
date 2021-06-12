@@ -1,4 +1,4 @@
-import dateapi from '../../api/dateapi'
+import timestatapi from '../../api/timestatapi'
 import moment from 'moment'
 
 export default {
@@ -133,19 +133,19 @@ export default {
 
         async setNewTable({dispatch}, newTable){
             console.log(newTable);
-            await dateapi.setDateTable(newTable);
+            await timestatapi.setDateTable(newTable);
             dispatch('getTables')
         },
 
         async getTables({commit}){
-            var result = await dateapi.getDateTables();
+            var result = await timestatapi.getDateTables();
             commit("setAllTables", result);
         },
 
         //Datum
 
         async getAllDates({commit}, inTable){
-            var result = await dateapi.getAllDates(inTable)
+            var result = await timestatapi.getAllDates(inTable)
             if(result.length == 0){
                 return alert("Keine Daten vorhanden");
             }
@@ -155,7 +155,7 @@ export default {
         },
       
         async saveDate({commit, dispatch, getters}, toDate){
-            await dateapi.saveDate(getters._getSelectedTable, toDate);
+            await timestatapi.saveDate(getters._getSelectedTable, toDate);
             dispatch('getAllDates', getters._getSelectedTable);
             commit("setDate", toDate)
         }

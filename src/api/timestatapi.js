@@ -8,7 +8,7 @@ export default {
         return new Promise((resolve, reject) => {
 
             axios({
-                url: 'http://localhost:5000/api/date/tables',
+                url: 'http://localhost:5000/api/timestats/tables',
                 method: 'get',
                 headers:  {'Content-Type': 'application/json'},
             })
@@ -25,7 +25,7 @@ export default {
     setDateTable(newTable){
         return new Promise((resolve, reject) => {
             axios({
-                url: 'http://localhost:5000/api/date/' + newTable,
+                url: 'http://localhost:5000/api/timestats/' + newTable,
                 method: 'post',
                 headers:  {'Content-Type': 'application/json'},
             })
@@ -44,7 +44,7 @@ export default {
     return new Promise((resolve, reject) => {
 
         axios({
-            url: 'http://localhost:5000/api/date/' + inTable,
+            url: 'http://localhost:5000/api/timestats/' + inTable,
             method: 'get',
             // headers:  {'Content-Type': 'application/json'},
         })
@@ -64,7 +64,7 @@ export default {
     saveDate(toTable, toDate){
     return new Promise((resolve, reject) => {
         axios({
-            url: 'http://localhost:5000/api/date/' + toTable + "/" + toDate,
+            url: 'http://localhost:5000/api/timestats/' + toTable + "/" + toDate,
             method: 'post',
             headers:  {'Content-Type': 'application/json'},
         })

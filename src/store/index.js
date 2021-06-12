@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import date from './modules/date'
+import timestats from './modules/timestats'
 import track from './modules/track'
 import calendar from './modules/calendar'
 import game from './modules/game'
@@ -11,7 +11,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
-    date,
+    timestats,
     track,
     calendar,
     game,

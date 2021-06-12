@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/"> Start </router-link> |
-      <router-link to="/Datetime">Datetime</router-link> |
+      <router-link to="/Timestats">Timestats</router-link> |
       <router-link to="/Calendar">Calendar</router-link> |
       <router-link to="/Gaming">Gaming</router-link> |
       <router-link to="/Todo">Todo </router-link> |  

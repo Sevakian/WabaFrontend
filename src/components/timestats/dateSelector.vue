@@ -37,7 +37,7 @@ export default {
     },
     
     computed: {
-        ...mapGetters("date", ['_getDateTables', '_getSelectedTable']),
+        ...mapGetters("timestats", ['_getDateTables', '_getSelectedTable']),
 
         dateTables: function(){
             return this._getDateTables;
@@ -54,7 +54,7 @@ export default {
         }
     },
     methods: {
-        ...mapActions("date", ['setTable', 'getAllDates', 'setNewTable']),
+        ...mapActions("timestats", ['setTable', 'getAllDates', 'setNewTable']),
 
         save(){
             event.preventDefault();

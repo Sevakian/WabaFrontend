@@ -79,7 +79,7 @@ export default {
   },
 
   computed: {
-    ...mapState("date", ['addedDate']),
+    ...mapState("timestats", ['addedDate']),
 
     date: function(){
       return  this.dateItem.year + "-" + 
@@ -92,7 +92,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('date', ['saveDate']),
+    ...mapActions('timestats', ['saveDate']),
 
     save(){
       event.preventDefault();
